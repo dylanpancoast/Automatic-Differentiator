@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: automaticdifferentiationTeam08
+Version: 0.0.2
+Summary: Team 08's final project for CS107; an automatic differentiation package
+Author-email: Em McGlone <mdmcglone@college.harvard.edu>, Nick Attkisson <nattkiss@college.harvard.edu>, Dylan Pancoast <dapancoast@college.harvard.edu>, Alyssa Ross <amross@college.harvard.edu>
+Project-URL: Homepage, https://github.com/pypa/sampleproject
+Project-URL: Bug Tracker, https://github.com/pypa/sampleproject/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# team08 Final Project repo for CS107
+
+![test](https://code.harvard.edu/CS107/team08/actions/workflows/test.yml/badge.svg)
+![coverage](https://code.harvard.edu/CS107/team08/actions/workflows/coverage.yml/badge.svg)
+

@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/automaticdifferentiationTeam08/__init__.py
+src/automaticdifferentiationTeam08/forwardmode.py
+src/automaticdifferentiationTeam08.egg-info/PKG-INFO
+src/automaticdifferentiationTeam08.egg-info/SOURCES.txt
+src/automaticdifferentiationTeam08.egg-info/dependency_links.txt
+src/automaticdifferentiationTeam08.egg-info/requires.txt
+src/automaticdifferentiationTeam08.egg-info/top_level.txt
