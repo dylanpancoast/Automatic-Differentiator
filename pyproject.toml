@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "automaticdifferentiationTeam08"
+version = "0.0.2"
+dependencies = [
+  'numpy',
+]
+authors = [
+  {name="Em McGlone", email="mdmcglone@college.harvard.edu"},
+  {name="Nick Attkisson", email="nattkiss@college.harvard.edu"},
+  {name="Dylan Pancoast", email="dapancoast@college.harvard.edu"},
+  {name="Alyssa Ross", email="amross@college.harvard.edu"},
+]
+description = "Team 08's final project for CS107; an automatic differentiation package"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+
