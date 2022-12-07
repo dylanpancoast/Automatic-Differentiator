@@ -12,6 +12,4 @@
 ## Overview
 This project is a Python package that implements automatic differentiation (AD) for vector and scalar functions, as well as Newton's Method for root finding. The package is designed to be used by a user who wants to compute the directional derivatives of a function. The user can also use the package to find the roots of a function using Newton's Method.
 
-## Broader Impact and Inclusivity Statement
-
 
