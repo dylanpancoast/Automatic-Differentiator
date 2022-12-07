@@ -3,10 +3,10 @@ on:
   push:
     branches:
       - cov_simple
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 # Allows us to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -50,4 +50,4 @@ jobs:
         with:
           pytest-coverage-path: ./pytest-coverage.txt
           junitxml-path: ./pytest.xml
-          default-branch: master
+          default-branch: main
