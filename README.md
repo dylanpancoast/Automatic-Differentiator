@@ -1,6 +1,6 @@
 ## Testing
-![test](https://code.harvard.edu/CS107/team08/actions/workflows/test.yml/badge.svg)
-![coverage](https://code.harvard.edu/CS107/team08/actions/workflows/coverage.yml/badge.svg)
+![test](https://https://github.com/dylanpancoast/Automatic-Differentiator/actions/workflows/test.yml/badge.svg)
+![coverage](https://https://github.com/dylanpancoast/Automatic-Differentiator/actions/workflows/coverage.yml/badge.svg)
 
 # Team08 Final Project Repo for CS107
 ### Authors (alphabetically):
