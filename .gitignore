@@ -1,0 +1,6 @@
+dist/
+src/automaticdifferentiationTeam08.egg-info
+paper-13.pdf
+*__pycache__
+*/.DS_Store
+*.DS_Store
