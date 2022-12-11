@@ -3,7 +3,7 @@
 import numpy as np
 import forwardmode as fd
 
-def jacobian(f, x):
+def _jacobian(f, x):
     """Computes the Jacobian of a function from Rn to Rm at a given point.
 
     Parameters
@@ -24,7 +24,7 @@ def jacobian(f, x):
     n = f.__code__.co_argcount
     partials = []
     for i in range(n):
-        dir = [0] * n
+        dir = np.array([0 for i in range(n)])
         dir[i] = 1
         partial = fd.directional_derivative(f, x, dir)
 
@@ -38,7 +38,7 @@ def jacobian(f, x):
 
     return np.transpose(np.array(partials))
 
-def find_root(f, x_init, tolerance=1e-10, max_steps=1e4):
+def find_root(f, x, tolerance=1e-10, max_steps=1e4):
     """Uses Newton's method to find roots of a function from Rn to Rn.
 
     Parameters
@@ -46,7 +46,7 @@ def find_root(f, x_init, tolerance=1e-10, max_steps=1e4):
     f : function
         The function whose roots are found. Must support inputs of type
         forwardmode.DualNumber and have the same number of outputs as inputs.
-    x_init : int|float|numpy.int64|numpy.float64|list
+    x : int|float|numpy.int64|numpy.float64|list
         The initial input value to iterate from. If list, elements must
         be of type int|float|numpy.int64|numpy.float64.
     tolerance : int|float
@@ -67,31 +67,22 @@ def find_root(f, x_init, tolerance=1e-10, max_steps=1e4):
         If root is not found within max_steps iterations.
     """
 
-    if type(x_init) in fd._supported_scalars:
-        x = np.array([x_init])
-    else:
-        x = np.array(x_init)
+    if type(x) in fd._supported_scalars:
+        x = np.array([x])
+    if not isinstance(x, np.ndarray):
+        raise TypeError("Cannot find root from a value of type {}".format(type(x)))
     steps = 0
 
-    if type(f(*x)) in fd._supported_scalars:
-        while np.linalg.norm(f(*x)) > tolerance and steps < max_steps:
-            x = x - (np.linalg.inv(jacobian(f,x)) @ np.array([f(*x)]))
-            steps += 1
-        if steps == max_steps:
-            raise TimeoutError("Could not find root.")
-        return x
-    else:
-        while np.linalg.norm(f(*x)) > tolerance and steps < max_steps:
-            x = x - (np.linalg.inv(jacobian(f,x)) @ np.array(f(*x)))
-            steps += 1
-        if steps == max_steps:
-            raise TimeoutError("Could not find root.")
-        return x
+    while np.linalg.norm(f(*x)) > tolerance and steps <= max_steps:
+        if type(f(*x)) in fd._supported_scalars:
+            x = x - (np.linalg.inv(_jacobian(f,x)) @ np.array([f(*x)]))
+        else:
+            x = x - (np.linalg.inv(_jacobian(f,x)) @ np.array(f(*x)))
+        steps += 1
+    if steps > max_steps:
+        raise TimeoutError("Could not find root.")
+    return x
 
 
 if __name__ == '__main__':
-
-    def f(x,y):
-        return x**2+y, y-x+1
-
-    print(find_root(f, [100,100]))
+    pass
