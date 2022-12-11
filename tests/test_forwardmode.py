@@ -43,20 +43,14 @@ class TestFunctions:
         assert n2.dual == 2 and n2.real == 207
 
         # Reject unsupported types
-        try:
-            DualNumber('1', 1)
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(DualNumber('1', 1), DualNumber)
+        except TypeError: assert True
 
         # Reject unsupported types
-        try:
-            DualNumber(1, '1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(DualNumber(1, '1'), DualNumber)
+        except TypeError: assert True
 
     def test_add(self):
         """Test DualNum add"""
@@ -82,12 +76,9 @@ class TestFunctions:
         assert n6.dual == 1
 
         # Reject unsupported types
-        try:
-            n6 + '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n6 + '1', DualNumber)
+        except TypeError: assert True
 
     def test_sub(self):
         """Test DualNum sub"""
@@ -113,12 +104,9 @@ class TestFunctions:
         assert n6.dual == 1
 
         # Reject unsupported types
-        try:
-            n6 - '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n6 - '1', DualNumber)
+        except TypeError: assert True
 
     def test_mul(self):
         """Test DualNum mul"""
@@ -144,12 +132,9 @@ class TestFunctions:
         assert n6.dual == 2
 
         # Reject unsupported types
-        try:
-            n6 * '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n6 * '1', DualNumber)
+        except TypeError: assert True
 
     def test_truediv(self):
         """Test DualNum truediv"""
@@ -175,20 +160,14 @@ class TestFunctions:
         assert np.isclose(n6.dual, 0.5)
 
         # Reject unsupported types
-        try:
-            n6 / '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n6 / '1', DualNumber)
+        except TypeError: assert True
 
         # Reject division by 0
-        try:
-            n1 / 0 and n1 / n0
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n1 / 0 and n1 / n0, Bool)
+        except ValueError: assert True
 
     def test_radd(self):
         """Test DualNum radd"""
@@ -204,12 +183,9 @@ class TestFunctions:
         assert n6.dual == 1
 
         # Reject unsupported types
-        try:
-            '1' + n6
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance('1' + n6, DualNumber)
+        except TypeError: assert True
 
     def test_rsub(self):
         """Test DualNum rsub"""
@@ -225,12 +201,9 @@ class TestFunctions:
         assert n6.dual == 1
 
         # Reject unsupported types
-        try:
-            '1' - n6
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance('1' - n6, DualNumber)
+        except TypeError: assert True
 
     def test_rmul(self):
         """Test DualNum rmul"""
@@ -246,12 +219,9 @@ class TestFunctions:
         assert n6.dual == 2
 
         # Reject unsupported types
-        try:
-            '1' * n6
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance('1' * n6, DualNumber)
+        except TypeError: assert True
 
     def test_rtruediv(self):
         """Test DualNum rtruediv"""
@@ -267,20 +237,12 @@ class TestFunctions:
         assert np.isclose(n6.dual, 0.5)
 
         # Reject unsupported types
-        try:
-            '1' / n6
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: '1' / n6
+        except TypeError: assert True
 
         # Reject division by 0
-        try:
-            0 / n1
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: 0 / n1
+        except ValueError: assert True
 
     def test_eq(self):
         """Test DualNum eq"""
@@ -292,12 +254,9 @@ class TestFunctions:
         assert n1 == 107
 
         # Reject unsupported types
-        try:
-            n1 == '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n1 == '1', Bool)
+        except TypeError: assert True
 
     def test_ne(self):
         """Test DualNum ne"""
@@ -309,12 +268,9 @@ class TestFunctions:
         assert n1 != 207
 
         # Reject unsupported types
-        try:
-            n1 != '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n1 != '1', Bool)
+        except TypeError: assert True
     
     def test_iadd(self):
         """Test DualNum iadd"""
@@ -349,12 +305,8 @@ class TestFunctions:
         assert np.isclose(n7, 117)
 
         # Reject unsupported types
-        try:
-            n6 += '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: n6 += '1'
+        except TypeError: assert True
 
     def test_isub(self):
         """Test DualNum isub"""
@@ -389,12 +341,8 @@ class TestFunctions:
         assert n7 == 97
 
         # Reject unsupported types
-        try:
-            n6 -= '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: n6 -= '1'
+        except TypeError: assert True
 
     def test_imul(self):
         """Test DualNum imul"""
@@ -429,12 +377,8 @@ class TestFunctions:
         assert n7 == 214
 
         # Reject unsupported types
-        try:
-            n6 *= '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: n6 *= '1'
+        except TypeError: assert True
 
     def test_itruediv(self):
         """Test DualNum itruediv"""
@@ -469,28 +413,16 @@ class TestFunctions:
         assert n7 == 53.5
 
         # Reject unsupported types
-        try:
-            n6 /= '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: n6 /= '1'
+        except TypeError: assert True
 
         # Reject division by 0
-        try:
-            n5 /= 0 
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: n5 /= 0
+        except ValueError: assert True
         
         # Reject division by 0 real component of dual number
-        try:
-            n6 /= n0
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: n6 /= n0
+        except ValueError: assert True
 
     def test_pow(self):
         """Test DualNum pow"""
@@ -519,13 +451,19 @@ class TestFunctions:
         n7 = 107 ** 2
         assert n7 == 11449
 
+        # Integer exp with 0 dual
+        nneg = DualNumber(-5, 5)
+        n0 = DualNumber(2, 0)
+        nodd = DualNumber(1/3, 0)
+        n10 = nneg ** n0
+        n11 = nneg ** nodd
+        assert n10.real == 25 and n10.dual == -50
+        assert np.isclose(n11.real, -1.7099759466766968) and np.isclose(n11.dual, 0.5699919822255656)
+
         # Reject unsupported types
-        try:
-            n6 ** '1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(n6 ** '1', DualNumber)
+        except TypeError: assert True
     
     def test_rpow(self):
         """Test DualNum rpow"""
@@ -541,12 +479,9 @@ class TestFunctions:
         assert n6.dual == 214
 
         # Reject unsupported types
-        try:
-            '1' ** n6
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance('1' ** n6, DualNumber)
+        except TypeError: assert True
 
     def test_neg(self):
         """Test DualNum neg"""
@@ -561,12 +496,9 @@ class TestFunctions:
         assert n6 == -107
 
         # Reject unsupported types
-        try:
-            -'1'
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: 
+            assert not isinstance(-'1', DualNumber)
+        except TypeError: assert True
 
     def test_str(self):
         """Test DualNum str"""
@@ -593,12 +525,8 @@ class TestFunctions:
         assert np.isclose(t10, 0)
 
         # Reject unsupported types
-        try:
-            fad.sin('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.sin('1')
+        except TypeError: assert True
 
     def test_cos(self):
         """Test DualNum cos"""
@@ -613,12 +541,8 @@ class TestFunctions:
         assert np.isclose(t10, 1)
         
         # Reject unsupported types
-        try:
-            fad.cos('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.cos('1')
+        except TypeError: assert True
 
     def test_tan(self):
         """Test DualNum tan"""
@@ -633,12 +557,8 @@ class TestFunctions:
         assert np.isclose(t10, 0)
 
         # Reject unsupported types
-        try:
-            fad.tan('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.tan('1')
+        except TypeError: assert True
 
     def test_sec(self):
         """Test DualNum sec"""
@@ -653,12 +573,8 @@ class TestFunctions:
         assert np.isclose(t10, 1)
 
         # Reject unsupported types
-        try:
-            fad.sec('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.sec('1')
+        except TypeError: assert True
 
     def test_csc(self):
         """Test DualNum csc"""
@@ -673,12 +589,8 @@ class TestFunctions:
         assert np.isclose(t10, -1)
 
         # Reject unsupported types
-        try:
-            fad.csc('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.csc('1')
+        except TypeError: assert True
 
     def test_cot(self):
         """Test DualNum cot"""
@@ -693,12 +605,8 @@ class TestFunctions:
         assert np.isclose(t10, 0)
 
         # Reject unsupported types
-        try:
-            fad.cot('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.cot('1')
+        except TypeError: assert True
 
     def test_arcsin(self):
         """Test DualNum arcsin"""
@@ -713,12 +621,8 @@ class TestFunctions:
         assert np.isclose(t10, np.pi / 6)
 
         # Reject unsupported types
-        try:
-            fad.arcsin('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.arcsin('1')
+        except TypeError: assert True
 
     def test_arccos(self):
         """Test DualNum arccos"""
@@ -733,12 +637,8 @@ class TestFunctions:
         assert np.isclose(t10, np.pi / 3)
 
         # Reject unsupported types
-        try:
-            fad.arccos('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.arccos('1')
+        except TypeError: assert True
 
     def test_arctan(self):
         """Test DualNum arctan"""
@@ -753,12 +653,8 @@ class TestFunctions:
         assert np.isclose(t10, np.pi / 4)
 
         # Reject unsupported types
-        try:
-            fad.arctan('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.arctan('1')
+        except TypeError: assert True
 
     def test_sinh(self):
         """Test DualNum sinh"""
@@ -773,12 +669,8 @@ class TestFunctions:
         assert np.isclose(n6, ee / 2 - ene / 2)
 
         # Reject unsupported types
-        try:
-            fad.sinh('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.sinh('1')
+        except TypeError: assert True
 
     def test_cosh(self):
         """Test DualNum cosh"""
@@ -793,12 +685,8 @@ class TestFunctions:
         assert np.isclose(n6, ene / 2 + ee / 2)
 
         # Reject unsupported types
-        try:
-            fad.cosh('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.cosh('1')
+        except TypeError: assert True
 
 
     def test_tanh(self):
@@ -814,12 +702,8 @@ class TestFunctions:
         assert np.isclose(n6, ee / (ene + ee) - ene / (ene + ee))
 
         # Reject unsupported types
-        try:
-            fad.tanh('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.tanh('1')
+        except TypeError: assert True
 
     def test_csch(self):
         """Test DualNum csch"""
@@ -834,12 +718,8 @@ class TestFunctions:
         assert np.isclose(n6, 2 / (ee - ene))
 
         # Reject unsupported types
-        try:
-            fad.csch('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.csch('1')
+        except TypeError: assert True
 
     def test_sech(self):
         """Test DualNum sech"""
@@ -854,12 +734,8 @@ class TestFunctions:
         assert np.isclose(n6, 2 / (ene + ee))
 
         # Reject unsupported types
-        try:
-            fad.sech('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.sech('1')
+        except TypeError: assert True
 
     def test_coth(self):
         """Test DualNum coth"""
@@ -874,12 +750,8 @@ class TestFunctions:
         assert np.isclose(n6, (ene + ee) / (ee - ene))
 
         # Reject unsupported types
-        try:
-            fad.coth('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.coth('1')
+        except TypeError: assert True
 
     def test_exp(self):
         """Test DualNum exp"""
@@ -901,12 +773,8 @@ class TestFunctions:
         assert np.isclose(n8, 10 ** 10)
 
         # Reject unsupported types
-        try:
-            fad.exp('1') and fad.log('1', 10)
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.exp('1') and fad.log('1', 10)
+        except TypeError: assert True
 
     def test_sqrt(self):
         """Test DualNum sqrt"""
@@ -921,20 +789,12 @@ class TestFunctions:
         assert np.isclose(n6, np.sqrt(np.e))
 
         # Ensure user cannot take sqrt of negative numbers
-        try:
-            fad.sqrt(t7)
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: fad.sqrt(t7)
+        except ValueError: assert True
 
         # Reject unsupported types
-        try:
-            fad.sqrt('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.sqrt('1')
+        except TypeError: assert True
 
     def test_log(self):
         """Test DualNum log"""
@@ -956,20 +816,12 @@ class TestFunctions:
         assert np.isclose(n8, 1)
 
         # Reject unsupported types
-        try:
-            fad.log('1') and fad.log('1', 10)
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.log('1') and fad.log('1', 10)
+        except TypeError: assert True
 
         # Reject log of negative numbers
-        try:
-            fad.log(t4) and fad.log(t4, 10)
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: fad.log(t4) and fad.log(t4, 10)
+        except ValueError: assert True
 
     def test_logistic(self):
         """Test DualNum logistic"""
@@ -986,10 +838,7 @@ class TestFunctions:
         # Reject unsupported types
         try:
             fad.logistic('1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        except TypeError: assert True
 
     def test_directional_derivative(self):
         """Test DualNum directional_derivative"""
@@ -1007,48 +856,28 @@ class TestFunctions:
         dual1 = fad.directional_derivative(fn1, np.pi, 1)
         assert np.isclose(dual1, -1)
 
-        dual2 = fad.directional_derivative(fn2, [1], [-1])
+        dual2 = fad.directional_derivative(fn2, np.array([1]), np.array([-1]))
         assert np.isclose(dual2, -2)
 
-        dual2 = fad.directional_derivative(fn3, [1, 1], [-1, -1])
+        dual2 = fad.directional_derivative(fn3, np.array([1, 1]), np.array([-1, -1]))
         assert np.isclose(dual2, -np.sqrt(2))
 
         # Reject unsupported types for fn input
-        try:
-            fad.directional_derivative('1', np.e, 1)
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.directional_derivative('1', np.e, 1)
+        except TypeError: assert True
     
         # Reject unsupported types for point input
-        try:
-            fad.directional_derivative(fad.logistic, '1', 1)
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.directional_derivative(fad.logistic, '1', 1)
+        except TypeError: assert True
 
         # Reject unsupported types for dir input
-        try:
-            fad.directional_derivative(fad.logistic, np.e, '1')
-        except TypeError:
-            assert True
-        else:
-            assert False
+        try: fad.directional_derivative(fad.logistic, np.e, '1')
+        except TypeError: assert True
 
         # Reject point and dir of different lengths
-        try:
-            fad.directional_derivative(fad.logistic, np.e, [1,2])
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: fad.directional_derivative(fad.logistic, np.e, np.array([1,2]))
+        except ValueError: assert True
 
         # Reject point and dir of different lengths
-        try:
-            fad.directional_derivative(fad.logistic, [np.e, np.e], [1,2])
-        except ValueError:
-            assert True
-        else:
-            assert False
+        try: fad.directional_derivative(fad.logistic, np.array([np.e, np.e]), np.array([1,2]))
+        except ValueError: assert True
