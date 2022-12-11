@@ -935,6 +935,7 @@ def jacobian(fn_list, *values):
 
     return [fn.grad(*values) for fn in fn_list]
 
+
 if __name__ == '__main__':
     pass
  
