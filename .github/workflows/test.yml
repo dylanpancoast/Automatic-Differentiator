@@ -3,7 +3,6 @@ on:
   push:
     branches: 
       - main
-      - cov_simple
 
   workflow_dispatch:
 
@@ -23,5 +22,9 @@ jobs:
         run: |
           python3 -m pip install pytest
           python3 -m pip install numpy
-      - name: Run test suite
-        run: pytest ./tests/test_automaticdifferentiation.py
+      - name: Run forward mode tests
+        run: pytest ./tests/test_forwardmode.py
+      - name: Run reverse mode tests
+        run: pytest ./tests/test_reversemode.py
+      - name: Run newton's method tests
+        run: pytest ./tests/test_newton.py
