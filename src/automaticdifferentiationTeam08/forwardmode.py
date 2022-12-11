@@ -47,10 +47,6 @@ class DualNumber:
 
         x = self.real
         p = self.dual
-
-        if x == 0:
-            raise ValueError("Cannot divide by 0.")
-
         return DualNumber(1 / x, -p / x ** 2)
 
     def __add__(self, new):
@@ -869,6 +865,10 @@ def directional_derivative(fn, point, direction, normalize=True):
     ValueError
         If the lengths of point, dir, and the number of arguments to fn do not
         match.
+
+    TypeError
+        If point and direction type cannot be made into np.ndarrays of supported
+        types
     """
     # Ensure right type of inputs are given
     # Ensure fn is of type function
@@ -876,13 +876,14 @@ def directional_derivative(fn, point, direction, normalize=True):
         raise TypeError("Cannot find derivative of a {}".format(type(fn)))
     # Ensure point is of type array
     if type(point) in _supported_scalars:
-        point = [point]
-    if type(point) is not list:
+        point = np.array([point])
+    if not isinstance(point, np.ndarray):
+        print(type(point))
         raise TypeError("Cannot evaluate derivative at a value of type {}".format(type(point)))
     # Ensure direction is of type array
     if type(direction) in _supported_scalars:
-        direction = [direction]
-    if type(direction) is not list:
+        direction = np.array([direction])
+    if not isinstance(direction, np.ndarray):
         raise TypeError("Cannot evaluate derivative in a direction of type {}".format(type(direction)))
 
     # Ensure right size of inputs are given
@@ -915,3 +916,7 @@ def directional_derivative(fn, point, direction, normalize=True):
         return dual_list
 
     return result.dual
+
+
+if __name__ == '__main__':
+    pass
